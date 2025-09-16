@@ -1,226 +1,101 @@
-# HƯỚNG DẪN TUÂN THỦ APP STORE
+# ĐIỀU KHOẢN DỊCH VỤ
 ## 8386 - Ứng Dụng Dự Đoán Số Xổ Số
 
-### 📋 CHECKLIST TUÂN THỦ APP STORE
+**Cập nhật lần cuối: 12/09/2025
 
-#### ✅ **1. Privacy Policy (Bắt buộc)**
-- [x] Tạo file `PRIVACY_POLICY.md`
-- [x] Bao gồm tiếng Việt và tiếng Anh
-- [x] Giải thích rõ việc thu thập dữ liệu
-- [x] Liệt kê các bên thứ ba (Firebase/Google)
-- [x] Quyền của người dùng
-- [x] Cách liên hệ
+### 1. CHẤP NHẬN ĐIỀU KHOẢN
 
-#### ✅ **2. Terms of Service (Khuyến nghị)**
-- [x] Tạo file `TERMS_OF_SERVICE.md`
-- [x] Làm rõ tính chất giải trí
-- [x] Hạn chế trách nhiệm
-- [x] Quyền sở hữu trí tuệ
+Bằng việc tải xuống, cài đặt và sử dụng ứng dụng 8386, bạn đồng ý tuân thủ các điều khoản và điều kiện này. Nếu bạn không đồng ý, vui lòng không sử dụng ứng dụng.
 
-#### ✅ **3. App Information (Cần cập nhật)**
-- [ ] Mô tả app trên App Store
-- [ ] Keywords phù hợp
-- [ ] Screenshots và video demo
-- [ ] Category: Entertainment hoặc Lifestyle
+### 2. MÔ TẢ DỊCH VỤ
 
-### 🔧 **TÍCH HỢP VÀO APP**
+Ứng dụng 8386 là một ứng dụng giải trí cung cấp:
+- Dự đoán số may mắn dựa trên tử vi và cung hoàng đạo kết hợp thuật toán tính xác xuất bằng AI.
+- Thông tin tử vi cá nhân (cung hoàng đạo, ngũ hành, thiên can, địa chi)
+- Lưu trữ lịch sử dự đoán cá nhân để dự đoán cho lần tiếp theo
 
-#### **1. Thêm Privacy Policy vào App:**
+### 3. TÍNH CHẤT GIẢI TRÍ
 
-Tạo file `PrivacyPolicyView.swift`:
+#### 3.1 Không đảm bảo kết quả:
+- Các dự đoán chỉ mang tính chất giải trí và tham khảo
+- Chúng tôi KHÔNG đảm bảo tính chính xác của các dự đoán
+- Kết quả xổ số là hoàn toàn ngẫu nhiên
 
-```swift
-import SwiftUI
+#### 3.2 Không khuyến khích cờ bạc:
+- Ứng dụng không khuyến khích cờ bạc quá mức
+- Người dùng chịu trách nhiệm về việc sử dụng dự đoán
+- Chúng tôi không chịu trách nhiệm về tổn thất tài chính
 
-struct PrivacyPolicyView: View {
-    @Environment(\.presentationMode) var presentationMode
-    
-    var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 16) {
-                    Text("Chính sách bảo mật")
-                        .font(.title)
-                        .fontWeight(.bold)
-                    
-                    Text("Nội dung chính sách bảo mật...")
-                        .font(.body)
-                    
-                    // Thêm toàn bộ nội dung từ PRIVACY_POLICY.md
-                }
-                .padding()
-            }
-            .navigationTitle("Chính sách bảo mật")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(trailing: Button("Đóng") {
-                presentationMode.wrappedValue.dismiss()
-            })
-        }
-    }
-}
-```
+### 4. QUYỀN VÀ TRÁCH NHIỆM
 
-#### **2. Thêm vào Settings Menu:**
+#### 4.1 Quyền của chúng tôi:
+- Chúng tôi cung cấp dịch vụ hoàn toàn miễn phí, không quảng cáo
+- Thay đổi, cập nhật hoặc ngừng dịch vụ bất cứ lúc nào
+- Từ chối dịch vụ cho người dùng vi phạm điều khoản
+- Thu thập dữ liệu sử dụng để cải thiện dịch vụ
 
-Trong `MainView.swift`, thêm:
+#### 4.2 Trách nhiệm của người dùng:
+- Cung cấp thông tin chính xác
+- Sử dụng ứng dụng đúng mục đích
+- Không lạm dụng hoặc tấn công hệ thống
+- Tuân thủ pháp luật hiện hành
 
-```swift
-NavigationLink(destination: PrivacyPolicyView()) {
-    HStack {
-        Image(systemName: "lock.shield")
-        Text("Chính sách bảo mật")
-    }
-}
-```
+### 5. HẠN CHẾ TRÁCH NHIỆM
 
-#### **3. Thêm vào Onboarding:**
+#### 5.1 Chúng tôi không chịu trách nhiệm cho:
+- Tổn thất tài chính do sử dụng dự đoán
+- Gián đoạn dịch vụ do lý do kỹ thuật
+- Thiệt hại gián tiếp hoặc hậu quả
+- Hành vi của người dùng khác
 
-Trong `OnboardingView.swift`, thêm checkbox:
+#### 5.2 Giới hạn trách nhiệm:
 
-```swift
-HStack {
-    Image(systemName: isAgreed ? "checkmark.square.fill" : "square")
-        .foregroundColor(isAgreed ? .green : .gray)
-    
-    Text("Tôi đồng ý với ")
-        .foregroundColor(.white)
-    
-    Button("Chính sách bảo mật") {
-        showPrivacyPolicy = true
-    }
-    .foregroundColor(.blue)
-    
-    Text("và ")
-        .foregroundColor(.white)
-    
-    Button("Điều khoản dịch vụ") {
-        showTerms = true
-    }
-    .foregroundColor(.blue)
-}
-```
+- Ứng dụng miễn phí hoàn toàn, vì vậy chúng tôi không chịu bất cứ trách nhiệm nào bất kể lý do gì.
 
-### 📱 **THÔNG TIN APP STORE**
+### 6. SỞ HỮU TRÍ TUỆ
 
-#### **App Name:**
-```
-8386 - Dự Đoán Số Xổ Số
-```
+#### 6.1 Quyền sở hữu:
+- Ứng dụng và nội dung thuộc sở hữu của chúng tôi
+- Người dùng được cấp giấy phép sử dụng hạn chế
+- Không được sao chép, phân phối hoặc tạo phiên bản phái sinh
 
-#### **Subtitle:**
-```
-AI Tử Vi & Số May Mắn
-```
+#### 6.2 Nội dung người dùng:
+- Người dùng giữ quyền sở hữu dữ liệu cá nhân
+- Chúng tôi có quyền sử dụng để cải thiện dịch vụ
+- Không được sử dụng cho mục đích thương mại
 
-#### **Description (Tiếng Việt):**
-```
-🔮 8386 - Ứng dụng dự đoán số xổ số thông minh dựa trên AI và tử vi
+### 7. CHẤM DỨT DỊCH VỤ
 
-✨ TÍNH NĂNG NỔI BẬT:
-• Dự đoán số may mắn dựa trên tử vi cá nhân
-• Tính toán cung hoàng đạo, ngũ hành, thiên can địa chi
-• AI phân tích và đưa ra dự đoán chính xác
-• Lưu trữ lịch sử dự đoán cá nhân
-• Giao diện đẹp mắt, dễ sử dụng
+#### 7.1 Chấm dứt bởi người dùng:
+- Có thể dừng sử dụng bất cứ lúc nào
+- Xóa ứng dụng khỏi thiết bị
+- Yêu cầu xóa dữ liệu cá nhân
 
-🌟 CÁCH SỬ DỤNG:
-1. Nhập ngày sinh và giới tính
-2. AI tính toán tử vi cá nhân
-3. Nhận dự đoán số may mắn hàng ngày
-4. Lưu trữ và theo dõi kết quả
+#### 7.2 Chấm dứt bởi chúng tôi:
+- Vi phạm điều khoản sử dụng
+- Hoạt động bất hợp pháp
+- Ngừng cung cấp dịch vụ
 
-⚠️ LƯU Ý:
-• Dự đoán chỉ mang tính chất giải trí
-• Không đảm bảo 100% chính xác
-• Sử dụng có trách nhiệm
+### 8. GIẢI QUYẾT TRANH CHẤP
 
-🎯 PHÙ HỢP VỚI:
-• Người yêu thích tử vi và chiêm tinh
-• Người chơi xổ số muốn tham khảo
-• Người quan tâm đến số học và may mắn
-```
+#### 8.1 Thương lượng:
+- Ưu tiên giải quyết thông qua thương lượng
+- Liên hệ qua email để trao đổi
 
-#### **Description (English):**
-```
-🔮 8386 - Smart lottery prediction app based on AI and horoscope
+#### 8.2 Trọng tài:
+- Trong trường hợp không thương lượng được
+- Áp dụng luật pháp Việt Nam
+- Tòa án có thẩm quyền tại [Địa phương của bạn]
 
-✨ KEY FEATURES:
-• Lucky number predictions based on personal horoscope
-• Calculate zodiac sign, five elements, heavenly stems, earthly branches
-• AI analysis for accurate predictions
-• Personal prediction history storage
-• Beautiful and user-friendly interface
+### 9. THAY ĐỔI ĐIỀU KHOẢN
 
-🌟 HOW TO USE:
-1. Enter birth date and gender
-2. AI calculates personal horoscope
-3. Receive daily lucky number predictions
-4. Store and track results
+- Chúng tôi có quyền thay đổi điều khoản bất cứ lúc nào
+- Thay đổi sẽ được thông báo trong ứng dụng
+- Tiếp tục sử dụng được coi là chấp nhận điều khoản mới
 
-⚠️ NOTE:
-• Predictions are for entertainment purposes only
-• No 100% accuracy guarantee
-• Use responsibly
+### 10. LIÊN HỆ
 
-🎯 PERFECT FOR:
-• Horoscope and astrology enthusiasts
-• Lottery players seeking reference
-• People interested in numerology and luck
-```
+Để liên hệ về điều khoản dịch vụ:
 
-#### **Keywords:**
-```
-xổ số,dự đoán,tử vi,chiêm tinh,may mắn,số học,hoàng đạo,ngũ hành,lottery,prediction,horoscope,astrology,lucky,numbers
-```
-
-#### **Category:**
-```
-Entertainment
-```
-
-#### **Age Rating:**
-```
-4+ (Suitable for all ages)
-```
-
-### 🚀 **BƯỚC TIẾP THEO**
-
-#### **1. Chuẩn bị tài khoản Developer:**
-- [ ] Đăng ký Apple Developer Account ($99/năm)
-- [ ] Tạo App ID cho 8386
-- [ ] Thiết lập certificates và provisioning profiles
-
-#### **2. Chuẩn bị assets:**
-- [ ] App icon (1024x1024px)
-- [ ] Screenshots cho các kích thước màn hình
-- [ ] App preview video (khuyến nghị)
-
-#### **3. Test và review:**
-- [ ] Test trên nhiều thiết bị iOS
-- [ ] Kiểm tra tất cả tính năng
-- [ ] Đảm bảo không crash
-- [ ] Test với các kích thước màn hình khác nhau
-
-#### **4. Submit lên App Store:**
-- [ ] Upload build lên App Store Connect
-- [ ] Điền đầy đủ thông tin app
-- [ ] Upload screenshots và metadata
-- [ ] Submit for review
-
-### 📞 **LIÊN HỆ HỖ TRỢ**
-
-Nếu cần hỗ trợ thêm về việc submit app:
-
-**Email**: [Email của bạn]
-**Website**: [Website của bạn nếu có]
-**Support**: [Thông tin hỗ trợ]
-
----
-
-**Lưu ý quan trọng:**
-- Đảm bảo thay thế tất cả placeholder [Email], [Địa chỉ], [Số điện thoại] bằng thông tin thực
-- Review lại chính sách bảo mật và điều khoản dịch vụ trước khi submit
-- Kiểm tra kỹ tính năng "dự đoán" để đảm bảo tuân thủ guidelines của Apple về cờ bạc
-
-
-
+**Email**: tabacson@gmail.com
+![Uploading image.png…]()
